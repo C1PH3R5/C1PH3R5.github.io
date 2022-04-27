@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="../css/theme.css">
+		<link rel="stylesheet" type="text/css" href="../css/curveTheme.css">
+		<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<!-- Bootstrap CSS -->
+		<title>Document</title>
+	</head>
+	<body>
+		<div class="container bg-color-rasianBlack">
+			
+			<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-color-rasianBlack border-bottom-solid" id="navbar1">
+				<div class="container pt-1 pb-1">
+					<h1>
+					<a class="navbar-brand mr-1 mb-1 mt-0 font-weight-bold" href="../index.html">Port<span class="txt-color-cgRed font-weight-bold">Folio</span></a>
+					</h1>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+					<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="navbar-collapse collapse justify-content-center" id="collapsingNavbar">
+						<ul class="navbar-nav ml-auto">
+							<li class="nav-item">
+								<a class="nav-link hover-underline-animation" href="../index.html#Speciale">Speciale</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link hover-underline-animation" href="#Projects">Projects</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link hover-underline-animation" href="#typography">Logbog</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link hover-underline-animation" href="#forms">CV</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link hover-underline-animation" href="#grid">Log ind</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</div>
+		<!-- side menu here  -->
+		<div class="container-fluid pr-0 pl-0 bg-color-rasianBlack">
+			<div class="row">
+				
+				<div class="col-lg-2 pr-0" >
+					<div class="nav-side-menu bg-color-rasianBlack">
+						<div class="brand pb-2 bg-color-rasianBlack">Press Curing Control</div>
+						<i class="toggle-btn bg-color-rasianBlack" data-toggle="collapse" data-target="#menu-content"><span class="material-icons material-icons-outlined">keyboard_double_arrow_down</span></i>
+						
+						<div class="menu-list">
+							
+							<ul id="menu-content" class="menu-content collapse out">
+								<li class="pt-5">
+									<h1 class="pl-2">
+									<a class="navbar-brand mr-1 mb-1 mt-0 font-weight-bold" href="../">Log<span class="txt-color-cgRed font-weight-bold">bog</span></a>
+									</h1>
+								</li>
+								<li  data-toggle="collapse" data-target="#PreSprint01" class="collapsed hover-underline-animation">
+									<a href=""><i class="fa fa-gift fa-lg"></i>PreSprint01 <span class="arrow"></span></a>
+								</li>
+								<ul class="sub-menu collapse" id="PreSprint01">
+									<li onclick="LogbogEventClicked(this.id)" id="PreSprint01_uge09" class="hover-underline-animation"><a href="#">Uge 9</a></li>
+									<li onclick="LogbogEventClicked(this.id)" id="PreSprint01_uge10" class="hover-underline-animation"><a href="#">Uge 10</a></li>
+									<li onclick="LogbogEventClicked(this.id)" id="PreSprint01_Noter" class="hover-underline-animation"><a href="#">Noter</a></li>
+								</ul>
+								<li  data-toggle="collapse" data-target="#PreSprint02" class="collapsed hover-underline-animation">
+									<a href=""><i class="fa fa-gift fa-lg"></i>PreSprint02 <span class="arrow"></span></a>
+								</li>
+								<ul class="sub-menu collapse" id="PreSprint02">
+									<li onclick="LogbogEventClicked(this.id)" id="PreSprint02_uge11" class="hover-underline-animation"><a href="#">Uge 11</a></li>
+									<li onclick="LogbogEventClicked(this.id)" id="PreSprint02_uge12" class="hover-underline-animation"><a href="#">Uge 12</a></li>
+									<li onclick="LogbogEventClicked(this.id)" id="PreSprint02_Noter" class="hover-underline-animation"><a href="#">Noter</a></li>
+								</ul>
+								<li id="LærningsPlan" onclick="LogbogEventClicked(this.id)" class="hover-underline-animation">
+									<a >
+										<i class="fa fa-user fa-lg"></i> Lærnings plan
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-10 pl-0 bg-color-rasianBlack">
+					<embed id="logbogContentHolder" class="bg-color-rasianBlack h100 embed-responsive menu-padding vh-100" src="../Resources/Logbog/uge7.html" type="">
+				</div>
+			</div>
+		</div>
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+		<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+		<script src="../js/carousel.js" type="text/javascript"></script>
+		<script src="../js/init.js" type="text/javascript"></script>
+		<script src="../js/PageLoader.js" type="text/javascript"></script>
+	</body>
+</html>

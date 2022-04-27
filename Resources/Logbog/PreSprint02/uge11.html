@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="../../../css/theme.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/curveTheme.css">
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- Bootstrap CSS -->
+        <title>Uge 11</title>
+    </head>
+    <body class="bg-color-rasianBlack">
+        <div class="container align-content-center">
+            <img class="img-fluid align-content-center" src="https://cdn.sanity.io/images/6icyfeiq/production/0243aeda44568ab2dc30a6c794f5fd408d1c5c81-2800x1318.jpg?q=75&fit=max&auto=format&dpr=0.75" alt="lærnigsmål">
+        </div>
+        <div class="container bg-color-rasianBlack">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="h1 text-center pt-5 pb-4">K8 Helm 3</h1>
+                </div>
+                <div class="col-12 pt-4 pb-4">
+                   <blockquote>
+                     <p class="pt-2">Helm kan instaler alle typer Kubernetes objecter, og den kan sammle det i en packed kaldet et chart, så man kan sige at den automatiser det at køre, alle de Kubectl apply -f .. , det skal køre for at installer et system på Kubernetes. Oplysninger om hvad Helm skal installer er beskrevet i et chart som består at template og value filer i yaml format som ligger i en fast lagt fil struktur. Helm bruger Go template, nginx-chart folder er der en sub folder templates som indholder en masse yaml filer, i yaml filer ser man en masse content spots f.eks fra service.yaml {{ .Values.service.nodePort }}, dette spot vil blive udfylde med det som står i value.yaml filen unser service: of nodeport: alså værdien 30950. Ved at køre helm template commandoen kan få liste alle filer efter at replacment er sket.</p>
+                     <p class="border border-secondary code-textfield pt-1 pb-1 pl-3">docker build -f ./tools/docker.tools -t mgc/tools .</p>
+                    </blockquote>
+                    <blockquote class="pt-4">
+                      <p>Charts er en packet med alle de oplysninger der skal bruges for at installer en givet system på Kubernetes, de kan gemmes i et repro, som typisk bare er et git repository.</p>
+                      <p class="pt-2">Et af disse repros udstilles af Bitnami som er en orgaisation som levere deployments af opensource produkter til forskeliig platforme. <a href="https://bitnami.com/">https://bitnami.com/</a></p>
+                      
+                      <p class="pt-4">Helm clienten bruges fra ens lokale maskine, så først logger man ind i det Kubernets context altså den Kubernetes server man vil installer i og derefter køre man sin Helm command.</p>
+                    </blockquote>
+                </div>
+                <div class="col-12">
+                  <div class="container align-content-center">
+                    <img class="img-fluid align-content-center pt-5" src="https://kinsta.com/dk/wp-content/uploads/sites/12/2019/11/hvad-er-nginx-1024x512.png" alt="lærnigsmål">
+                </div>
+                  <blockquote>
+                    <h1 class="text-center pt-5">Install Nginx web server</h1>
+                    <hr/>
+                  </blockquote>
+                  <blockquote class="pt-4">
+                    <p class="pt-2">Dette afsnit beskriver hvordan vi kan installer Nginx i Kubernete(Kind), ved at bruger de forskellige tools og tekninger der er blevet gennem gået i de tidliger afsnit.</p>
+                    <p class="pt-2">Opgave tager udgang punkt i denn block. <a href="https://www.containiq.com/post/helm-charts">https://www.containiq.com/post/helm-charts</a></p>
+                    
+                    <p class="pt-4">Chartet som installere kan findes Bitnamis git <a href="https://github.com/bitnami/charts/tree/master/bitnami/nginx">https://github.com/bitnami/charts/tree/master/bitnami/nginx</a></p>
+                    
+                    <p class="pt-4">Start mgc-tools i en powershell terminal cd to kubernetes-worpress folderen</p>
+                    <p class="border border-secondary code-textfield pt-1 pb-1 pl-3">docker run -it --rm --net host -v ${HOME}/.kube/:/root/.kube/ -v ${PWD}:/work -w /work mgc/tools bash</p>
+                    <p class="pt-4">Start en ny powershell terminal og lave en Kubernetes server med Kind cd to kubernetes-worpress folderen</p>
+                    <p class="border border-secondary code-textfield pt-1 pb-1 pl-3">kind create cluster --name mgc-nginx  --config=/helm/kind/config.yaml</p>
+                    <p class="pt-4">Skift til mgc-tools powershell terminalen og kør helm komandoen.</p>
+                    <p class="border border-secondary code-textfield pt-1 pb-1 pl-3">
+                      kubectl create namespace mgc-namespace <br>
+                      helm install mgc-nginx --namespace mgc-namespace helm/nginx-chart <br>
+                      kubectl get pods -n mgc-namespace <br>
+                    </p>
+                    <p class="pt-4">Der køre nu en nginx pod i Kubernetes i namespace mgc-namespace</p>
+                    <p class="pt-2">Test fra en browser, <a href="http://127.0.0.1:30950">http://127.0.0.1:30950</a></p>
+                    <p class="pt-2">Hvis man ser i Kind config kan man se at der er en extraPortMappings</p>
+                    <p class="border border-secondary code-textfield pt-1 pb-1 pl-3">
+                      extraPortMappings: <br>
+                      - containerPort: 30950 <br>
+                      hostPort: 30950 <br>
+                      listenAddress: "127.0.0.1" <br>
+                      protocol: TCP <br>
+                    </p>
+                    <p class="pt-4">og i helm values.yaml er opsætning til kunernetes servicen</p>
+                    <p class="border border-secondary code-textfield pt-1 pb-1 pl-3">
+                      service: <br>
+                      type: NodePort <br>
+                      port: 80 <br>
+                      nodePort: 30950 <br>
+                    </p>
+                    <p class="pt-4">Dette er en meget simpel og statisk måde at exporte servicen til hostens network normalt vil man bruge en Ingres controler men mere om det senere</p>
+                    <p class="border border-secondary code-textfield pt-1 pb-1 pl-3">helm list -n mgc-namespace</p>
+                    <p class="pt-4">For at helm kan list vise de releases af charted som er installlerde, skal man angive det namepsace hvor de er deployet. Helm list viser nu den en release der finde og man kan se status og revision. Status er deployed og revision er 1, hvis man kørte en helm upgrade for at deploy en ny version, så ville man have 2 revision.</p>
+                    <p class="pt-2">helm history angry-bird</p>
+                    <p class="border border-secondary code-textfield pt-1 pb-1 pl-3">helm history mgc-nginx -n mgc-namespace</p>
+                    <p class="pt-4">Vise history og hvis helm fejler vil der i description stå en fejl meddelse</p>
+                    <p class="border border-secondary code-textfield pt-1 pb-1 pl-3">
+                      helm rollback mgc-nginx  1 -n mgc-namespace <br>
+                      helm history mgc-nginx -n mgc-namespace <br>
+                    </p>
+                    <p class="pt-4">Vil lave en rolle back til tidligere version, i dette til fælde giver det ingen mening da der kun er en revison.</p>
+                    <p class="pt-2">Prøv at gå inde i value.yaml file og ændre replicaCount: 1 til replicaCount: 3</p>
+
+                    <p class="border border-secondary code-textfield pt-1 pb-1 pl-3">
+                      helm upgrade mgc-nginx --namespace mgc-namespace helm/nginx-chart <br>
+                      kubectl get pods -n mgc-namespace <br>
+                    </p>
+                    <p class="pt-4">du har nu 3 pods kørende!</p>
+                    <p class="border border-secondary code-textfield pt-1 pb-1 pl-3">
+                      helm history mgc-nginx -n mgc-namespace <br>
+                      helm rollback mgc-nginx  1 -n mgc-namespace <br> 
+                      kubectl get pods -n mgc-namespace <br>
+                      helm history mgc-nginx -n mgc-namespace <br>
+                    </p>
+                    <p class="pt-4">Du kan nu se at pods terminere og man ender med igen kun at have 1 pod, og i history kan man se at der er lavet rolle back til revision 1.</p>
+                    <p class="border border-secondary code-textfield pt-1 pb-1 pl-3">
+                      helm uninstall mgc-nginx -n mgc-namespace <br>
+                      helm history mgc-nginx -n mgc-namespace <br>
+                    </p>
+                    <p class="pt-4">
+                      Test fra en browser, <a href="http://127.0.0.1:30950">http://127.0.0.1:30950</a> <br>
+                      Servicen er du fjernet og al hvad charted oprettede af objecter er slettede.
+                    </p>
+                    <p class="pt-2d">I powershell terminalen som er i hosten</p>
+                    <p class="border border-secondary code-textfield pt-1 pb-1 pl-3">
+                      kind delete cluster  --name mgc-nginx <br>
+                      kind get clusters <br>
+                    </p>
+                    <p class="pt-2"> som der kan ses nu, har vi ikke nogle cluster kørende efter vi kørte delete kommandoen!</p>
+                  </blockquote>
+                </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script src="../../js/carousel.js" type="text/javascript"></script>
+        <script src="../../js/init.js" type="text/javascript"></script>
+    </body>
+</html>
