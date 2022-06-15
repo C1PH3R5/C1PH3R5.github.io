@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="../../../css/theme.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/curveTheme.css">
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- Bootstrap CSS -->
+        <title>Uge 11</title>
+    </head>
+    <body class="bg-color-rasianBlack">
+        <div class="container align-content-center">
+            <img class="img-fluid align-content-center" src="../../img/Social-Engineering-Toolkit.jpg" alt="SetoolKit">
+        </div>
+        <div class="container bg-color-rasianBlack">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="h1 text-center pt-5 pb-4">Web Jacking Attack Method</h1>
+                </div>
+                <div class="col-12 pt-4 pb-4">
+                   <blockquote>
+                     <p class="pt-2">Web Jacking Attack Vector er en anden phishing-teknik, der kan bruges i social engineering-aktiviteter.</br>
+                      Angriberen, der bruger denne metode, opretter et falsk websted, og når offeret åbner linket, vises en side med beskeden om, at webstedet er flyttet, og at de har brug for for at klikke på et andet link.</br>
+                      Hvis offeret klikker på det link, der ser rigtigt ud, bliver han omdirigeret til en falsk side. </br>
+                      </p>
+                     <p class="border border-secondary code-textfield pt-1 pb-1 pl-3">Kali@kali~ Sudo SetoolKit</p>
+                     <p class="p-2">Det sociale ingeniørværktøj har allerede importeret denne form for angreb. <br>
+                      Så vi vil bruge SET til at implementere denne metode. Vi åbner SET, og vi vælger mulighed 2, som er Website Attack Vectors.</p>
+                      <p class="pt-4">i hovede menuen starter vi altid med at updatere SetoolKit, så vi er sikre på at vi altid er updatere med de nyeste angrabs metoder</p>
+                      <p class="border border-secondary code-textfield mt-2 pt-1 pb-1 pl-3">Set> 1</p>
+                      <img class="img-fluid align-content-center pb-1" src="../../img/WebjackingUdklip.PNG" alt="SetoolKit">
+                      <p class="pt-2">Vi vil se en liste med de tilgængelige metoder. <br>
+                        Det type angreb, vi skal bruge, er selvfølgelig Web Attack metode, så vi vælger mulighed nummer 2.</p>
+                        <p class="border border-secondary code-textfield mt-2 pt-1 pb-1 pl-3">Set> 2</p>
+                      <img class="img-fluid pt-2" src="../../img/WebjackingUdklip2.PNG" alt="setoolkit">
+                      <p class="pt-2"> her efter vil vi se en yderliger liste med for skellige angrab.<br>
+                        Det angreb, vi skal bruge, er selvfølgelig Web Jacking Attack, så vi vælger mulighed nummer 5.</p>
+                        <p class="border border-secondary code-textfield mt-2 pt-1 pb-1 pl-3">Set> 5</p>
+                      <img class="img-fluid pt-2" src="../../img/WebjackingUdklip3.PNG" alt="setoolkit">
+                      <p class="pt-2"> I den næste menu har vi 3 muligheder:</p>
+                      <ul>
+                        <li>
+                          <p class="pt-1">Web Templates</p>
+                        </li>
+                        <li>
+                          <p class="pt-1">Site Cloner</p>
+                        </li>
+                        <li>
+                          <p class="pt-1">Custom Import</p>
+                        </li>
+                      </ul>
+                      <p class="pt-2">Vi vil vælge webstedskloneren for at klone webstedet af vores interesse. <br>
+                        Husk, at denne type angreb fungerer med credential harvester-metoden, så vi skal vælge et websted, der har brugernavn og adgangskodefelter, for at angrebet skal lykkes. For dette scenarie, som du kan se på billedet nedenfor, skal vi vælge at klone Facebook på grund af sin popularitet.</p>
+                        <p class="border border-secondary code-textfield mt-2 pt-1 pb-1 pl-3">Set> 1</p>
+                        <img class="pt-2" src="../../img/WebjackingUdklip4.PNG" alt="SetoolKit">
+                        <p class="border border-secondary code-textfield mt-2 pt-1 pb-1 pl-3">Set:Webattack> ip adress for the post back in harverster/tabnabbing [10.0.2.15]: localhost</p>
+                        <p class="border border-secondary code-textfield mt-2 pt-1 pb-1 pl-3">Set:Webattack> path to the web to cloned: /home/kali/Documents/htmlPages/login</p>
+                        <p class="border border-secondary code-textfield mt-2 pt-1 pb-1 pl-3">Enter choice [1/2]: 1</p>
+                        <p class="pt-2">nu har vi bundet post back ip'en til vores local ip, og sat pathen til vores fake html side</p>
+                        <p class="pt-2"> nu vil man se at setoolKit starter den webserver og dens harverster</p>
+                        <img src="../../img/WebjackingUdklip6.PNG" alt="setoolKit">
+                        <p class="pt-2">Nu er det tid til at sende vores link med vores IP-adresse til offeret. Lad os se, hvad offeret vil se, hvis han åbner linket. <br>
+                        i dette tilfælde bruger vi localhost, så kan ikke sende det ud fra vores local net. dog tester vi det lokalt på kali maskinen</p>
+                        <p class="pt-2">Som du kan se, vises en meddelelse, der informerer brugeren om, at webstedet er flyttet til en ny placering. <br>
+                           Linket på meddelelsen virker gyldigt, så alle mistænkelige brugere vil klikke på linket. <br>
+                            På det tidspunkt indlæses en ny side i offerets browser som det vil være falsk og kører på vores webserver.</p>
+                        <img class="pt-4" src="../../img/WebjackingUdklip7.PNG" alt="setoolKit">
+                        <p class="pt-5">Hvis offeret indtaster sine legitimationsoplysninger på den falske Facebook-side, der ligner den rigtige, vil vi være i stand til at fange hans brugernavn og adgangskode. <br>
+                           Det næste billede viser, at:</p>
+                        <img class="pt-5" src="../../img/WebjackingUdklip8.PNG" alt="setoolKit_resualt">
+                      </blockquote>
+                      <div class="col-12">
+                        <h1 class="h1 text-center pt-5 pb-5">Konklusion</h1>
+                    </div>
+                    <blockquote>
+                      <p class="">Formålet med dette angreb er at forsøge at høste brugernes legitimationsoplysninger ved at bruge en webside med et gyldigt link, som når nogen åbner det link, indlæses en ny falsk side. <br>
+                         Det er en ganske interessant teknik, der forsøger at narre brugeren til at tro, at websiden er ægte, fordi linket er gyldigt. <br>
+                          Brugere skal være opmærksomme på denne type angreb, især når de besøger en webside, der indeholder lignende meddelelser om websteder eller objekter, der er flyttet til nye steder.</p>
+                      <p class="pt-2">På den anden side bliver du som social ingeniør nødt til at skabe dit scenarie om engagementet og hvordan du vil levere linket til brugerne og hvilken hjemmeside du skal bruge.</p>
+                    </blockquote>
+                </div>              
+          </div>
+        </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script src="../../js/carousel.js" type="text/javascript"></script>
+        <script src="../../js/init.js" type="text/javascript"></script>
+    </body>
+</html>
